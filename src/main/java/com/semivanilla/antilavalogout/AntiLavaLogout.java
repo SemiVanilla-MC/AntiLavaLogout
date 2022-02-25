@@ -62,7 +62,7 @@ public final class AntiLavaLogout extends JavaPlugin implements Listener {
         String message = getConfig().getString("message")
                 .replace("%damage%", damage + "")
                 .replace("%seconds%", seconds + "");
-        event.getPlayer().sendMessage(message);
+        event.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&',message));
     }
 
     public void damagePlayer(Player p, double damage) {
