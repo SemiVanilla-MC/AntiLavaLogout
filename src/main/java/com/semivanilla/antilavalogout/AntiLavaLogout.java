@@ -49,14 +49,15 @@ public final class AntiLavaLogout extends JavaPlugin implements Listener {
         Optional<Map.Entry<UUID,Long>> entry = lavaLogouts.entrySet().stream().filter(e -> e.getKey().equals(event.getPlayer().getUniqueId())).findFirst();
         if (entry.orElse(null) == null)
              return;
-        Location loc = event.getPlayer().getLocation();
         long logout = entry.get().getValue();
         long now = System.currentTimeMillis();
         long diff = now - logout;
         long seconds = diff / 1000;
         double damagePerSecond = getConfig().getDouble("damage-second"),
         baseDamage = getConfig().getDouble("base-damage");
-        double damage = baseDamage + (seconds * damagePerSecond);
+        double damage = (seconds * damagePerSecond);
+        if (damage < baseDamage)
+            damage = baseDamage;
         damagePlayer(event.getPlayer(), damage);
     }
 
