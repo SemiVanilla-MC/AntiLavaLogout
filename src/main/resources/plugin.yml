@@ -1,0 +1,4 @@
+name: AntiLavaLogout
+version: '${project.version}'
+main: com.semivanilla.antilavalogout.AntiLavaLogout
+api-version: 1.18
