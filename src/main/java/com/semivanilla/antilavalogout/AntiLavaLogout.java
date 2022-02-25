@@ -59,6 +59,10 @@ public final class AntiLavaLogout extends JavaPlugin implements Listener {
         if (damage < baseDamage)
             damage = baseDamage;
         damagePlayer(event.getPlayer(), damage);
+        String message = getConfig().getString("message")
+                .replace("%damage%", damage + "")
+                .replace("%seconds%", seconds + "");
+        event.getPlayer().sendMessage(message);
     }
 
     public void damagePlayer(Player p, double damage) {
