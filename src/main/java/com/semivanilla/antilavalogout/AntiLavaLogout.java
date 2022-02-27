@@ -49,6 +49,7 @@ public final class AntiLavaLogout extends JavaPlugin implements Listener {
         Optional<Map.Entry<UUID,Long>> entry = lavaLogouts.entrySet().stream().filter(e -> e.getKey().equals(event.getPlayer().getUniqueId())).findFirst();
         if (entry.orElse(null) == null)
              return;
+        lavaLogouts.remove(entry.get().getKey());
         long logout = entry.get().getValue();
         long now = System.currentTimeMillis();
         long diff = now - logout;
